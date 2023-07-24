@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+"""Defines a square class."""
 
 from models.rectangle import Rectangle
 
@@ -16,29 +18,16 @@ class Square(Rectangle):
         self.height = value
 
     def __str__(self):
-        return "[Square] ({:d}) {:d}/{:d} - {:d}".format(self.id, self.x,
-                                                         self.y, self.width)
+        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
 
     def update(self, *args, **kwargs):
-        if len(args):
-            for i, arg in enumerate(args):
-                if i == 0:
-                    self.id = arg
-                elif i == 1:
-                    self.size = arg
-                elif i == 2:
-                    self.x = arg
-                elif i == 3:
-                    self.y = arg
-            else:
-                for key, value in kwargs.items():
-                    if hasattr(self, key):
-                        setattr(self, key, value)
+        if args:
+            attrs = ['id', 'size', 'x', 'y']
+            for attr, val in zip(attrs, args):
+                setattr(self, attr, val)
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
 
     def to_dictionary(self):
-        return {
-            "id": self.id,
-            "size": self.size,
-            "x": self.x,
-            "y": self.y
-        }
+        return {'id': self.id, 'size': self.width, 'x': self.x, 'y': self.y}
