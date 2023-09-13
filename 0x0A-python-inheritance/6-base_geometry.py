@@ -8,7 +8,8 @@ class BaseGeometry:
 
     This class serves as the base class for other geometry classes.
 
-    """
+"""
+
 
 def area(self):
     """
