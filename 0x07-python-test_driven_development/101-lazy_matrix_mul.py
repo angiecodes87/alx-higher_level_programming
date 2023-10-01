@@ -1,19 +1,28 @@
-#!/usr/bin/python3
-"""
-Defines a function for matrix multiplication using NumPy.
-"""
-import numpy
+#include "Python.h"
 
+/**
+ * print_python_string - Displays information about Python strings.
+ * @p: A PyObject representing a string.
+ */
+void print_python_string(PyObject *p)
+{
+    long int length;
 
-def lazy_matrix_mul(m_a, m_b):
-     """
-    Multiply two matrices represented as NumPy arrays.
+    fflush(stdout);
 
-    Args:
-        m_a (numpy.ndarray): The first matrix.
-        m_b (numpy.ndarray): The second matrix.
+    printf("[.] Information about the string object\n");
+    if (strcmp(p->ob_type->tp_name, "str") != 0)
+    {
+        printf("  [ERROR] Invalid String Object\n");
+        return;
+    }
 
-    Returns:
-        numpy.ndarray: The result of matrix multiplication.
-    """
-    return numpy.matmul(m_a, m_b)
+    length = ((PyASCIIObject *)(p))->length;
+
+    if (PyUnicode_IS_COMPACT_ASCII(p))
+        printf("  Type: Compact ASCII\n");
+    else
+        printf("  Type: Compact Unicode Object\n");
+    printf("  Length: %ld\n", length);
+    printf("  Value: %ls\n", PyUnicode_AsWideCharString(p, &length));
+}
