@@ -2,9 +2,8 @@
 """
 Defines lazy_matrix function
 """
-import numpy
+import numpy as np
 
-
-def lazy_matrix_mul(m_a, m_b):
-    """ calculates the matrix multiplication of two matrices"""
-    return numpy.matmul(m_a, m_b)
+def lazy_matrix_multiply(matrix_a, matrix_b):
+    """Calculates the matrix multiplication of two matrices"""
+    return np.matmul(matrix_a, matrix_b)
