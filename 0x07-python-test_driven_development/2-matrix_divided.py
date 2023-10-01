@@ -27,8 +27,7 @@ def matrix_divided(matrix, div):
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
-    matrix_type_error_msg = "matrix must be a matrix(list of lists) of
-    integers/floats"
+    matrix_type_error_msg = "matrix must be a matrix(list of lists) of integers/floats"
 
     if not matrix or not isinstance(matrix, list):
         raise TypeError(matrix_type_error_msg)
