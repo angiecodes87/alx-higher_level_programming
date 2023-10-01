@@ -2,7 +2,7 @@
 """
     4-print_square: print_square()
 """
-
+ 
 
 def print_square(size):
     """
