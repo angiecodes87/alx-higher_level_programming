@@ -1,11 +1,6 @@
-#!/usr/bin/python3
-"""
-Defines a function for matrix multiplication using NumPy.
-"""
-
 import numpy as np
 
-def matrix_multiplication(m_a, m_b):
+def matrix_multiply(m_a, m_b):
     """
     Multiply two matrices using NumPy arrays.
 
@@ -19,5 +14,5 @@ def matrix_multiplication(m_a, m_b):
     if not isinstance(m_a, np.ndarray) or not isinstance(m_b, np.ndarray):
         raise TypeError("m_a and m_b must be NumPy arrays")
 
-    result_matrix = np.matmul(m_a, m_b)
+    result_matrix = np.dot(m_a, m_b)
     return result_matrix
