@@ -10,13 +10,5 @@ class BaseGeometry:
 
 """
 
-
-def area(self):
-    """
-    Calculate the area of the geometry.
-
-    Raises:
-        Exception: This method is not implemented in the base class.
-
-    """
-    raise Exception("area() is not implemented")
+    def area(self):
+        raise Exception("area() is not implemented")
