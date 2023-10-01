@@ -7,7 +7,7 @@ import numpy as np
 
 def lazy_matrix_multiply(matrix_a, matrix_b):
     """
-    Perform matrix multiplication of two matrices using NumPy.
+    Multiply two matrices represented as NumPy arrays.
 
     Args:
         matrix_a (numpy.ndarray): The first matrix.
