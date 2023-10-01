@@ -1,8 +1,13 @@
-import numpy as np
+#!/usr/bin/python3
+"""
+Defines a function for matrix multiplication using NumPy.
+"""
+import numpy
 
-def matrix_multiply(m_a, m_b):
-    """
-    Multiply two matrices using NumPy arrays.
+
+def lazy_matrix_mul(m_a, m_b):
+     """
+    Multiply two matrices represented as NumPy arrays.
 
     Args:
         m_a (numpy.ndarray): The first matrix.
@@ -11,8 +16,4 @@ def matrix_multiply(m_a, m_b):
     Returns:
         numpy.ndarray: The result of matrix multiplication.
     """
-    if not isinstance(m_a, np.ndarray) or not isinstance(m_b, np.ndarray):
-        raise TypeError("m_a and m_b must be NumPy arrays")
-
-    result_matrix = np.dot(m_a, m_b)
-    return result_matrix
+    return numpy.matmul(m_a, m_b)
