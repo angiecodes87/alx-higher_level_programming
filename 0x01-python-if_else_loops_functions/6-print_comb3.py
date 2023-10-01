@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 
-for tens_digit in range(10):
-    for ones_digit in range(tens_digit + 1, 10):
-        print("{:d}{:d}".format(tens_digit, ones_digit), end=", " if
-			        tens_digit != 8 or ones_digit != 9 else "\n")
-
-# Print a newline at the end
-print()
+for i in range(0, 10):
+    for j in range(0, 10):
+        if (i * 10 + j) == 89:
+            print("{:02d}".format(i * 10 + j))
+        elif (i * 10 + j) < (j * 10 + i):
+            print("{:02d}, ".format(i * 10 + j), end='')
