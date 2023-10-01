@@ -1,29 +1,83 @@
-def matrix_mul(m_a, m_b):
-    # Validate m_a and m_b
-    if not isinstance(m_a, list) or not isinstance(m_b, list):
-        raise TypeError("m_a must be a list or m_b must be a list")
+#!/usr/bin/python3
+"""
+This script defines a matrix multiplication function.
+"""
+
+def matrix_multiply(matrix_a, matrix_b):
+    """
+    Multiply two matrices represented as lists of lists of integers/floats.
     
-    if not all(isinstance(row, list) for row in m_a) or not all(isinstance(row, list) for row in m_b):
-        raise TypeError("m_a must be a list of lists or m_b must be a list of lists")
+    Args:
+        matrix_a (list): The first matrix.
+        matrix_b (list): The second matrix.
     
-    if not m_a or not m_b:
-        raise ValueError("m_a can't be empty or m_b can't be empty")
+    Returns:
+        list: The result of the matrix multiplication.
     
-    if not all(isinstance(num, (int, float)) for row in m_a for num in row) or not all(isinstance(num, (int, float)) for row in m_b for num in row):
-        raise TypeError("m_a should contain only integers or floats or m_b should contain only integers or floats")
+    Raises:
+        TypeError: If the input matrices are not of the expected type.
+        ValueError: If the input matrices are empty or incompatible for multiplication.
+    """
+    if type(matrix_a) is not list:
+        raise TypeError("matrix_a must be a list")
     
-    if not all(len(row) == len(m_a[0]) for row in m_a) or not all(len(row) == len(m_b[0]) for row in m_b):
-        raise TypeError("each row of m_a must be of the same size or each row of m_b must be of the same size")
+    num_rows_a = len(matrix_a)
+    if num_rows_a == 0:
+        raise ValueError("matrix_a can't be empty")
     
-    if len(m_a[0]) != len(m_b):
-        raise ValueError("m_a and m_b can't be multiplied")
+    num_cols_a = None
+    for row in matrix_a:
+        if type(row) is not list:
+            raise TypeError("matrix_a must be a list of lists")
+        
+        if num_cols_a is None:
+            num_cols_a = len(row)
+            if num_cols_a == 0:
+                raise ValueError("matrix_a can't be empty")
+        
+        if num_cols_a != len(row):
+            raise TypeError("each row of matrix_a must have the same size")
+        
+        for element in row:
+            if type(element) is not int and type(element) is not float:
+                raise TypeError("matrix_a should contain only integers or floats")
+
+    if type(matrix_b) is not list:
+        raise TypeError("matrix_b must be a list")
     
-    # Perform matrix multiplication
-    result = [[0 for _ in range(len(m_b[0]))] for _ in range(len(m_a))]
+    num_rows_b = len(matrix_b)
+    if num_rows_b == 0:
+        raise ValueError("matrix_b can't be empty")
     
-    for i in range(len(m_a)):
-        for j in range(len(m_b[0])):
-            for k in range(len(m_b)):
-                result[i][j] += m_a[i][k] * m_b[k][j]
+    num_cols_b = None
+    for row in matrix_b:
+        if type(row) is not list:
+            raise TypeError("matrix_b must be a list of lists")
+        
+        if num_cols_b is None:
+            num_cols_b = len(row)
+            if num_cols_b == 0:
+                raise ValueError("matrix_b can't be empty")
+        
+        if num_cols_b != len(row):
+            raise TypeError("each row of matrix_b must have the same size")
+        
+        for element in row:
+            if type(element) is not int and type(element) is not float:
+                raise TypeError("matrix_b should contain only integers or floats")
+
+    if num_cols_a != num_rows_b:
+        raise ValueError("matrix_a and matrix_b can't be multiplied")
     
-    return result
+    result_matrix = []
+    
+    for i in range(num_rows_a):
+        row_result = []
+        for j in range(num_cols_b):
+            element_sum = 0
+            for k in range(num_cols_a):
+                element_sum += matrix_a[i][k] * matrix_b[k][j]
+            row_result.append(element_sum)
+        result_matrix.append(row_result)
+    
+    return result_matrix
