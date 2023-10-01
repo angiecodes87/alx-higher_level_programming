@@ -3,15 +3,16 @@
 This script defines a function for lazy matrix multiplication using NumPy.
 """
 
+
 import numpy as np
 
-def lazy_matrix_multiply(matrix_a, matrix_b):
+def lazy_matrix_mul(m_a, m_b):
     """
     Multiply two matrices represented as NumPy arrays.
 
     Args:
-        matrix_a (numpy.ndarray): The first matrix.
-        matrix_b (numpy.ndarray): The second matrix.
+        m_a (list of lists): The first matrix.
+        m_b (list of lists): The second matrix.
 
     Returns:
         numpy.ndarray: The result of matrix multiplication.
@@ -19,9 +20,15 @@ def lazy_matrix_multiply(matrix_a, matrix_b):
     Raises:
         ValueError: If the input matrices are incompatible for multiplication.
     """
-    if not isinstance(matrix_a, np.ndarray) or not isinstance(matrix_b, np.ndarray):
-        raise TypeError("Both input matrices must be NumPy arrays")
+    if not isinstance(m_a, list) or not isinstance(m_b, list):
+        raise TypeError("m_a and m_b must be lists")
     
+    if not m_a or not m_b:
+        raise ValueError("m_a can't be empty" if not m_a else "m_b can't be empty")
+    
+    matrix_a = np.array(m_a)
+    matrix_b = np.array(m_b)
+
     if matrix_a.shape[1] != matrix_b.shape[0]:
         raise ValueError("Matrix dimensions are not compatible for multiplication")
     
