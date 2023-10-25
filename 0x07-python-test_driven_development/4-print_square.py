@@ -1,27 +1,14 @@
 #!/usr/bin/python3
 """
-This module contains a function that prints a square with the character #.
+    4-from_json_string: from_json_string()
 """
 
 
-def print_square(size):
-    """Prints a square with the character #.
+import json
 
-    Args:
-        size (int): The size of the square to be printed.
 
-    Returns:
-        None
-
-    Raises:
-        TypeError: If size is not an integer number.
-        ValueError: If size is less than 0.
+def from_json_string(my_str):
     """
-
-    if not isinstance(size, int):
-        raise TypeError("size must be an integer")
-    if size < 0:
-        raise ValueError("size must be >= 0")
-
-    for _ in range(size):
-        print("#" * size)
+         returns an object represented by a JSON string.
+    """
+    return (json.loads(my_str))
