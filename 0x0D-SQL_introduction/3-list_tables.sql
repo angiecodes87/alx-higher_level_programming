@@ -1,3 +1,4 @@
-USE mysql; -- Replace 'database_name' with the name of your database
+-- Show all tables
+USE mysql;
 SHOW TABLES;
 
